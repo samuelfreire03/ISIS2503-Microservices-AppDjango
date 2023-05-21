@@ -12,7 +12,6 @@ def check_place(data):
     r = requests.get(settings.PATH_PLA, headers={"Accept":"application/json"})
     places = r.json()
     for place in places:
-        print(place["name"])
         if data["place"] == place["name"]:
             return True
     return False
