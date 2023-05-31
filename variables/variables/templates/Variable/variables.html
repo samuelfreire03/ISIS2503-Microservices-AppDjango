@@ -24,58 +24,41 @@
               </a>
           </nav>
 
+            <div class="page-content-wrapper">
+                <div class="container">
+                    <!-- Content page -->
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/variables/">Pacientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/measurements/">Historia Clinica</a>
-                </li>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/adendas/">Adendas</a>
-                </li>
-            </ul>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
 
-            <br>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr style="color:#0E2EB0">
+                                    <th>Paciente</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-    <div class="page-content-wrapper">
-        <div class="container">
-            <!-- Content page -->
+                                {% for variable in variable_list %}
+                                <tr>
+                                    <td>{{ variable.name }}</td>
+                                </tr>
+                                {% endfor %}
 
-            <div class="panel panel-default">
-                <div class="panel-body">
+                                </tbody>
+                            </table>
 
-                    <table class="table table-hover">
-                        <thead>
-                        <tr style="color:#0E2EB0">
-                            <th>Paciente</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                            <div style="text-align:center;">
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        onClick=" window.location.href='/' ">
+                                    Back
+                                </button>
+                            </div>
 
-                        {% for variable in variable_list %}
-                        <tr>
-                            <td>{{ variable.name }}</td>
-                        </tr>
-                        {% endfor %}
-
-                        </tbody>
-                    </table>
-
-                    <div style="text-align:center;">
-                        <button type="button" class="btn btn-primary waves-effect waves-light"
-                                onClick=" window.location.href='/' ">
-                            Back
-                        </button>
+                        </div>
                     </div>
-
                 </div>
             </div>
-        </div>
-    </div>
 
           </div>
         </nav>
