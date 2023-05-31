@@ -25,8 +25,7 @@ def VariableList(request):
         for dto in data:
             jsonData = {
                 'id': str(dto['_id']),
-                "variable": dto['variable'],
-                'threshold': dto['threshold']
+                "variable": dto['variable']
             }
             result.append(jsonData)
         client.close()
