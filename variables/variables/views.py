@@ -30,7 +30,10 @@ def VariableList(request):
             }
             result.append(jsonData)
         client.close()
-        return render(request, 'Variable/variables.html', result)
+        context = {
+            'variable_list': variables
+        }
+        return render(request, 'Variable/variables.html', context)
     
     if request.method == 'POST':
         data = JSONParser().parse(request)
