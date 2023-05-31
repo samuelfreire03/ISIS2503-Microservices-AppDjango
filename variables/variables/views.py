@@ -31,7 +31,7 @@ def VariableList(request):
             result.append(jsonData)
         client.close()
         context = {
-            'variable_list': variables
+            'variable_list': result
         }
         return render(request, 'Variable/variables.html', context)
     
