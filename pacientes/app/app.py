@@ -35,14 +35,6 @@ def contacto(nombre, edad):
     return render_template('contacto.html', data=data)
 
 
-def query_string():
-    print(request)
-    print(request.args)
-    print(request.args.get('param1'))
-    print(request.args.get('param2'))
-    return "Ok"
-
-
 @app.route('/cursos')
 def listar_cursos():
     data = {}
@@ -65,6 +57,5 @@ def pagina_no_encontrada(error):
 
 
 if __name__ == '__main__':
-    app.add_url_rule('/query_string', view_func=query_string)
     app.register_error_handler(404, pagina_no_encontrada)
     app.run(debug=True,host="0.0.0.0", port=8080)
