@@ -1,17 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_mysqldb import MySQL
 
+import psycopg2
+from psycopg2 import DatabaseError
+
 app = Flask(__name__)
-
-# Conexión MySQL
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'pacientes_user1'
-app.config['MYSQL_PASSWORD'] = 'Isis2503'
-app.config['MYSQL_DB'] = 'pacientes_db'
-
-conexion = MySQL(app)
-
 
 @app.route('/')
 def index():
@@ -38,15 +31,31 @@ def contacto(nombre, edad):
 
 @app.route('/cursos')
 def listar_cursos():
-    data = {}
-    cursor = conexion.connection.cursor()
-    sql = "SELECT id, nombre, tipo FROM pacientes"
-    cursor.execute(sql)
-    cursos = cursor.fetchall()
-    print(cursos)
-    data['cursos'] = cursos
-    data['mensaje'] = 'Exito'
-    return jsonify(data)
+    
+    try:
+    connection = psycopg2.connect(
+        host='10.128.0.25',
+        port='5432',
+        user='variables_user',
+        password='Isis2503',
+        database='variables_db'
+    )
+
+    print("Conexión exitosa.")
+    cursor = connection.cursor()
+    cursor.execute("SELECT version()")
+    row = cursor.fetchone()
+    print("Versión del servidor de PostgreSQL: {}".format(row))
+    cursor.execute("SELECT * FROM curso")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+    except DatabaseError as ex:
+        print("Error durante la conexión: {}".format(ex))
+    finally:
+        connection.close()  # Se cerró la conexión a la BD.
+        print("La conexión ha finalizado.")
+    return jsonify(rows)
 
 
 def pagina_no_encontrada(error):
