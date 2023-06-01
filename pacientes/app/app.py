@@ -45,6 +45,8 @@ def listar_cursos():
 
     cursor.execute("Create table pacientes(id int, name varchar(50))")
 
+    cursor.execute("INSERT INTO pacientes(1, 'samuel freire')")
+
     cursor.execute("SELECT * FROM pacientes")
 
     rows = cursor.fetchall()
