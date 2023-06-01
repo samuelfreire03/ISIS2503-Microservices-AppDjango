@@ -12,17 +12,6 @@ app.config['MYSQL_DB'] = 'pacientes_db'
 conexion = MySQL(app)
 
 
-@app.before_request
-def before_request():
-    print("Antes de la petición...")
-
-
-@app.after_request
-def after_request(response):
-    print("Después de la petición")
-    return response
-
-
 @app.route('/')
 def index():
     # return "<h1>UskoKruM2010 - Suscríbete!</h1>"
