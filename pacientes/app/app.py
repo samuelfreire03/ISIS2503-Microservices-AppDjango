@@ -31,6 +31,8 @@ def contacto(nombre, edad):
 
 @app.route('/cursos')
 def listar_cursos():
+
+    rows = []
     
     try:
         connection = psycopg2.connect(
