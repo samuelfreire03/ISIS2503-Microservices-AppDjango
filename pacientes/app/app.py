@@ -45,7 +45,7 @@ def listar_cursos():
     cursor.execute("SELECT version()")
     row = cursor.fetchone()
     print("Versión del servidor de PostgreSQL: {}".format(row))
-    cursor.execute("SELECT * FROM pacientes")
+    cursor.execute("CREATE TABLE pacientes (id int, nombre varchar(50) ,tipo varchar(50))")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
