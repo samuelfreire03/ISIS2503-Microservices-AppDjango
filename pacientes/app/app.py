@@ -45,12 +45,12 @@ def listar_cursos():
     cursor.execute("SELECT version()")
     row = cursor.fetchone()
     print("Versión del servidor de PostgreSQL: {}".format(row))
-    cursor.execute("CREATE TABLE pacientes (name VARCHAR(255), address VARCHAR(255))")
-
-    connection.close()
+    cursor.execute("SELECT * FROM pacientes")
 
     for x in cursor:
         print(x)
+
+    connection.close()
 
     return jsonify([])
 
