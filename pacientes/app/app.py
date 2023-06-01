@@ -45,12 +45,8 @@ def listar_cursos():
     cursor.execute("SELECT version()")
     row = cursor.fetchone()
     print("Versión del servidor de PostgreSQL: {}".format(row))
-    cursor.execute("INSERT INTO pacientes(id, nombre, tipo) VALUES ('1','Samuel freire','critico')")
-    cursor.execute("SELECT * FROM pacientes")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-    return jsonify(rows)
+    cursor.execute("create table pacientes ( id int, nombre varchar(10) )")
+    return jsonify(row)
 
 
 def pagina_no_encontrada(error):
