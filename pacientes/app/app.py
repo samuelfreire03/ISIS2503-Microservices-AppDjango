@@ -47,8 +47,9 @@ def listar_cursos():
     print("Versión del servidor de PostgreSQL: {}".format(row))
     cursor.execute("SELECT * FROM variables")
 
-    for x in cursor:
-        print(x)
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
 
     connection.close()
 
