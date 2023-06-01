@@ -6,31 +6,10 @@ from psycopg2 import DatabaseError
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    # return "<h1>UskoKruM2010 - Suscríbete!</h1>"
-    cursos = ['PHP', 'Python', 'Java', 'Kotlin', 'Dart', 'JavaScript']
-    data = {
-        'titulo': 'Index123',
-        'bienvenida': '¡Saludos!',
-        'cursos': cursos,
-        'numero_cursos': len(cursos)
-    }
-    return render_template('index.html', data=data)
-
-
-@app.route('/contacto/<nombre>/<int:edad>')
-def contacto(nombre, edad):
-    data = {
-        'titulo': 'Contacto',
-        'nombre': nombre,
-        'edad': edad
-    }
-    return render_template('contacto.html', data=data)
-
-
 @app.route('/cursos')
 def listar_cursos():
+
+    data = {}
 
     conn = psycopg2.connect("postgresql://postgres:isis2503@10.128.0.27:5432/postgres")
 
@@ -39,10 +18,13 @@ def listar_cursos():
     cursor.execute("SELECT * FROM pacientes")
 
     rows = cursor.fetchall()
+
+    data['pacientes'] = rows
+
     for row in rows:
         print(row)
 
-    return jsonify([])
+    return render_template('pacientes.html',data)
 
 
 def pagina_no_encontrada(error):
