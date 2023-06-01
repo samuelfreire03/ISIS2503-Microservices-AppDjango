@@ -52,8 +52,7 @@ def listar_cursos():
             print(row)
     except DatabaseError as ex:
         print("Error durante la conexión: {}".format(ex))
-    finally:
-        connection.close()  # Se cerró la conexión a la BD.
+    finally:  # Se cerró la conexión a la BD.
         print("La conexión ha finalizado.")
     return jsonify(rows)
 
