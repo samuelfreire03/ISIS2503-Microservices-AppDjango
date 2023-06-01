@@ -32,11 +32,11 @@ def contacto(nombre, edad):
 @app.route('/cursos')
 def listar_cursos():
 
-    conn = psycopg2.connect("postgresql://variables_user:isis2503@10.128.0.27:5432/variables_db")
+    conn = psycopg2.connect("postgresql://postgres:isis2503@10.128.0.27:5432/postgres")
 
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM variables_db.pacientes")
+    cursor.execute("SELECT * FROM pacientes")
 
     rows = cursor.fetchall()
     for row in rows:
