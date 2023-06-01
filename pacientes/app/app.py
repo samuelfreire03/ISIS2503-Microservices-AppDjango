@@ -43,10 +43,6 @@ def listar_cursos():
     print("Conexión exitosa.")
     cursor = connection.cursor()
 
-    cursor.execute("Create table pacientes(id int, name varchar(50))")
-
-    cursor.execute("INSERT INTO pacientes ( id, name) VALUES ( '1', 'samuel freire') ")
-
     cursor.execute("SELECT * FROM pacientes")
 
     rows = cursor.fetchall()
