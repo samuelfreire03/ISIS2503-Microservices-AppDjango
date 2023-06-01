@@ -47,7 +47,7 @@ def listar_cursos():
     print("Versión del servidor de PostgreSQL: {}".format(row))
     cursor.execute("CREATE TABLE pacientes (name VARCHAR(255), address VARCHAR(255))")
 
-    cursor.execute("SHOW TABLES")
+    connection.close()
 
     for x in cursor:
         print(x)
