@@ -36,7 +36,7 @@ def listar_cursos():
 
     cursor = conn.cursor()
 
-    cursor.execute("\dt")
+    cursor.execute("SELECT * FROM " + "pacientes" + ";")
 
     rows = cursor.fetchall()
     for row in rows:
