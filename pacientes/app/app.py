@@ -36,7 +36,7 @@ def listar_cursos():
         host='10.128.0.25',
         port='5432',
         user='variables_user',
-        password='Isis2503',
+        password='isis2503',
         database='variables_db'
     )
 
