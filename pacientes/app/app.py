@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 # Conexión MySQL
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456'
-app.config['MYSQL_DB'] = 'base_datos'
+app.config['MYSQL_USER'] = 'pacientes_user'
+app.config['MYSQL_PASSWORD'] = 'Isis2503'
+app.config['MYSQL_DB'] = 'pacientes_db'
 
 conexion = MySQL(app)
 
@@ -59,7 +59,7 @@ def listar_cursos():
     data = {}
     try:
         cursor = conexion.connection.cursor()
-        sql = "SELECT codigo, nombre, creditos FROM curso ORDER BY nombre ASC"
+        sql = "SELECT id, nombre, tipo FROM pacientes"
         cursor.execute(sql)
         cursos = cursor.fetchall()
         # print(cursos)
