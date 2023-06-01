@@ -6,7 +6,7 @@ from psycopg2 import DatabaseError
 
 app = Flask(__name__)
 
-@app.route('/cursos')
+@app.route('/pacientes')
 def listar_cursos():
 
     data = {}
