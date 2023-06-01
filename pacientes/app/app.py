@@ -36,7 +36,7 @@ def listar_cursos():
 
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM " + "pacientes" + ";")
+    cursor.execute("SELECT * FROM variables_db.pacientes")
 
     rows = cursor.fetchall()
     for row in rows:
