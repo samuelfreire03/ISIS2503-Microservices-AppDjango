@@ -24,7 +24,7 @@ def listar_cursos():
     for row in rows:
         print(row)
 
-    return render_template('pacientes.html', data=data)
+    return render_template('Pacientes/pacientes.html', data=data)
 
 
 def pagina_no_encontrada(error):
