@@ -33,23 +33,23 @@ def contacto(nombre, edad):
 def listar_cursos():
     
     try:
-    connection = psycopg2.connect(
-        host='10.128.0.25',
-        port='5432',
-        user='variables_user',
-        password='Isis2503',
-        database='variables_db'
-    )
+        connection = psycopg2.connect(
+            host='10.128.0.25',
+            port='5432',
+            user='variables_user',
+            password='Isis2503',
+            database='variables_db'
+        )
 
-    print("Conexión exitosa.")
-    cursor = connection.cursor()
-    cursor.execute("SELECT version()")
-    row = cursor.fetchone()
-    print("Versión del servidor de PostgreSQL: {}".format(row))
-    cursor.execute("SELECT * FROM curso")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+        print("Conexión exitosa.")
+        cursor = connection.cursor()
+        cursor.execute("SELECT version()")
+        row = cursor.fetchone()
+        print("Versión del servidor de PostgreSQL: {}".format(row))
+        cursor.execute("SELECT * FROM curso")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
     except DatabaseError as ex:
         print("Error durante la conexión: {}".format(ex))
     finally:
