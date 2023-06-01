@@ -4,9 +4,9 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Conexión MySQL
-app.config['MYSQL_HOST'] = ''
-app.config['MYSQL_USER'] = 'pacientes_user'
-app.config['MYSQL_PASSWORD'] = 'Isis2503'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pacientes_db'
 
 conexion = MySQL(app)
@@ -62,7 +62,7 @@ def listar_cursos():
         sql = "SELECT id, nombre, tipo FROM pacientes"
         cursor.execute(sql)
         cursos = cursor.fetchall()
-        # print(cursos)
+        print(cursos)
         data['cursos'] = cursos
         data['mensaje'] = 'Exito'
     except Exception as ex:
