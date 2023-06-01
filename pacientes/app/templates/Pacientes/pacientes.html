@@ -39,6 +39,7 @@
                             <thead>
                             <tr style="color:#0E2EB0">
                                 <th>Pacientes</th>
+                                <th>Tipo</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,6 +47,7 @@
                             {% for variable in data.pacientes %}
                             <tr>
                                 <td>{{ variable[1] }}</td>
+                                <td>{{ variable[2] }}</td>
                             </tr>
                             {% endfor %}
 
