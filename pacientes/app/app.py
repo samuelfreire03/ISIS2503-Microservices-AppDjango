@@ -33,7 +33,7 @@ def contacto(nombre, edad):
 def listar_cursos():
 
     connection = psycopg2.connect(
-        host='10.128.0.16',
+        host='10.128.0.25',
         port='5432',
         user='variables_user',
         password='isis2503',
@@ -42,10 +42,8 @@ def listar_cursos():
 
     print("Conexión exitosa.")
     cursor = connection.cursor()
-    cursor.execute("SELECT version()")
-    row = cursor.fetchone()
-    print("Versión del servidor de PostgreSQL: {}".format(row))
-    cursor.execute("SELECT * FROM Variable")
+    
+    cursor.execute("Create table pacientes(id int, name varchar(50))")
 
     rows = cursor.fetchall()
     for row in rows:
