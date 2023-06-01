@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Conexión MySQL
-app.config['MYSQL_HOST'] = '%'
+app.config['MYSQL_HOST'] = '127.0.0.1:3306'
 app.config['MYSQL_USER'] = 'pacientes_user'
 app.config['MYSQL_PASSWORD'] = 'Isis2503'
 app.config['MYSQL_DB'] = 'pacientes_db'
@@ -38,16 +38,13 @@ def contacto(nombre, edad):
 @app.route('/cursos')
 def listar_cursos():
     data = {}
-    try:
-        cursor = conexion.connection.cursor()
-        sql = "SELECT id, nombre, tipo FROM pacientes"
-        cursor.execute(sql)
-        cursos = cursor.fetchall()
-        print(cursos)
-        data['cursos'] = cursos
-        data['mensaje'] = 'Exito'
-    except Exception as ex:
-        data['mensaje'] = 'Error...'
+    cursor = conexion.connection.cursor()
+    sql = "SELECT id, nombre, tipo FROM pacientes"
+    cursor.execute(sql)
+    cursos = cursor.fetchall()
+    print(cursos)
+    data['cursos'] = cursos
+    data['mensaje'] = 'Exito'
     return jsonify(data)
 
 
