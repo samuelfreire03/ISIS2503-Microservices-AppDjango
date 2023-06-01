@@ -32,30 +32,23 @@ def contacto(nombre, edad):
 @app.route('/cursos')
 def listar_cursos():
 
-    rows = []
-    
-    try:
-        connection = psycopg2.connect(
-            host='10.128.0.25',
-            port='5432',
-            user='variables_user',
-            password='Isis2503',
-            database='variables_db'
-        )
+    connection = psycopg2.connect(
+        host='10.128.0.25',
+        port='5432',
+        user='variables_user',
+        password='Isis2503',
+        database='variables_db'
+    )
 
-        print("Conexión exitosa.")
-        cursor = connection.cursor()
-        cursor.execute("SELECT version()")
-        row = cursor.fetchone()
-        print("Versión del servidor de PostgreSQL: {}".format(row))
-        cursor.execute("create table pacientes ( id int, nombre varchar(50) ,tipo varchar(50))")
-        rows = cursor.fetchall()
-        for row in rows:
-            print(row)
-    except DatabaseError as ex:
-        print("Error durante la conexión: {}".format(ex))
-    finally:  # Se cerró la conexión a la BD.
-        print("La conexión ha finalizado.")
+    print("Conexión exitosa.")
+    cursor = connection.cursor()
+    cursor.execute("SELECT version()")
+    row = cursor.fetchone()
+    print("Versión del servidor de PostgreSQL: {}".format(row))
+    cursor.execute("SELECT * FROM pacientes")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
     return jsonify(rows)
 
 
