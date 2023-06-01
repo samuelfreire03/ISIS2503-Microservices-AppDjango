@@ -33,7 +33,7 @@ def contacto(nombre, edad):
 def listar_cursos():
 
     connection = psycopg2.connect(
-        host='10.128.0.25',
+        host='10.128.0.27',
         port='5432',
         user='variables_user',
         password='isis2503',
