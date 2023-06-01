@@ -43,7 +43,7 @@ def listar_cursos():
     print("Conexión exitosa.")
     cursor = connection.cursor()
 
-    cursor.execute("SELECT * FROM pacientes")
+    cursor.execute("SELECT * FROM pacientes;")
 
     rows = cursor.fetchall()
     for row in rows:
