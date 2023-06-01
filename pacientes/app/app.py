@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_mysqldb import MySQL
-import MySQLdb
 
 app = Flask(__name__)
 
@@ -39,12 +38,9 @@ def contacto(nombre, edad):
 @app.route('/cursos')
 def listar_cursos():
     data = {}
+    cursor = conexion.connection.cursor()
     sql = "SELECT id, nombre, tipo FROM pacientes"
-    datos = [127.0.0.1, root, DB_PASS, DB_NAME] 
-    
-    conn = MySQLdb.connect(*datos) # Conectar a la base de datos 
-    cursor = conn.cursor()         # Crear un cursor 
-    cursor.execute(sql) 
+    cursor.execute(sql)
     cursos = cursor.fetchall()
     print(cursos)
     data['cursos'] = cursos
